@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		82E256FD217FBDAC00F89E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E256FC217FBDAC00F89E12 /* AppDelegate.swift */; };
-		82E256FF217FBDAC00F89E12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E256FE217FBDAC00F89E12 /* ViewController.swift */; };
 		82E25702217FBDAC00F89E12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82E25700217FBDAC00F89E12 /* Main.storyboard */; };
 		82E25704217FBDAD00F89E12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E25703217FBDAD00F89E12 /* Assets.xcassets */; };
 		82E25707217FBDAD00F89E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82E25705217FBDAD00F89E12 /* LaunchScreen.storyboard */; };
 		82E25711217FD27400F89E12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82E25710217FD27400F89E12 /* GoogleService-Info.plist */; };
 		82E25713217FD5B800F89E12 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E25712217FD5B800F89E12 /* Default-568h@2x.png */; };
 		82E25716217FDA7800F89E12 /* MessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E25715217FDA7800F89E12 /* MessageKit.framework */; };
+		82E25718217FDD1800F89E12 /* ChatRoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E25717217FDD1800F89E12 /* ChatRoomsTableViewController.swift */; };
+		82E2571C217FDD6900F89E12 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2571B217FDD6900F89E12 /* MessageViewController.swift */; };
 		DDEEA04EED0277D10A44CAFE /* Pods_Firebase_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DEAFBD5B1ACBAE9E7F1BB9 /* Pods_Firebase_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +23,6 @@
 		47DEAFBD5B1ACBAE9E7F1BB9 /* Pods_Firebase_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E256F9217FBDAC00F89E12 /* Firebase Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Firebase Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E256FC217FBDAC00F89E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		82E256FE217FBDAC00F89E12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82E25701217FBDAC00F89E12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82E25703217FBDAD00F89E12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82E25706217FBDAD00F89E12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +30,8 @@
 		82E25710217FD27400F89E12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82E25712217FD5B800F89E12 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		82E25715217FDA7800F89E12 /* MessageKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageKit.framework; path = Carthage/Build/iOS/MessageKit.framework; sourceTree = "<group>"; };
+		82E25717217FDD1800F89E12 /* ChatRoomsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsTableViewController.swift; sourceTree = "<group>"; };
+		82E2571B217FDD6900F89E12 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = "Firebase Chat/ViewController/MessageViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BAF7ED7C7229E883C49C7D6E /* Pods-Firebase Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Firebase Chat/Pods-Firebase Chat.release.xcconfig"; sourceTree = "<group>"; };
 		C3AA993A6090417DF9C247E0 /* Pods-Firebase Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Firebase Chat/Pods-Firebase Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +89,8 @@
 		82E256FB217FBDAC00F89E12 /* Firebase Chat */ = {
 			isa = PBXGroup;
 			children = (
-				82E256FE217FBDAC00F89E12 /* ViewController.swift */,
+				82E2571A217FDD3600F89E12 /* Model */,
+				82E25719217FDD2800F89E12 /* ViewController */,
 				82E2570F217FBDC100F89E12 /* Storyboards */,
 				82E2570E217FBDB900F89E12 /* Resources */,
 			);
@@ -112,6 +115,22 @@
 				82E25705217FBDAD00F89E12 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		82E25719217FDD2800F89E12 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82E25717217FDD1800F89E12 /* ChatRoomsTableViewController.swift */,
+				82E2571B217FDD6900F89E12 /* MessageViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		82E2571A217FDD3600F89E12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82E256FF217FBDAC00F89E12 /* ViewController.swift in Sources */,
 				82E256FD217FBDAC00F89E12 /* AppDelegate.swift in Sources */,
+				82E2571C217FDD6900F89E12 /* MessageViewController.swift in Sources */,
+				82E25718217FDD1800F89E12 /* ChatRoomsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
