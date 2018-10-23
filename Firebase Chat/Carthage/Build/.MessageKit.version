@@ -1,0 +1,18 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "1.0.0",
+  "iOS" : [
+    {
+      "name" : "MessageKit",
+      "hash" : "46436031d32054880f0f260c8e8fe394d6773416dfcc7e504fc4b50b5fa6b47a"
+    }
+  ]
+}
