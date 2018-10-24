@@ -12,19 +12,42 @@ class ChatRoomsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func AddChatRoom(_ sender: Any) {
+        let alert = UIAlertController(title: "New Chat Room", message: "Would you like to add a new chat room", preferredStyle: .alert)
+        alert.addTextField { (sender) in
+            sender.placeholder = "Your Name:"
+        }
+        alert.addTextField { (roomName) in
+            roomName.placeholder = "Chat Room Name:"
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let addChatRoom = UIAlertAction(title: "Add", style: .default) { (_) in
+            let _sender = alert.textFields![0].text!
+            let roomName = alert.textFields![1].text!
+//            guard let text = alert.textFields?.first?.text else { return }
+            print(_sender)
+            print(roomName)
+            
+            // Add chat room to Firebase Database
+            let roomNameDictionary = ["sender" : _sender,"roomName": roomName]
+            DatabaseService.shared.chatRoomReference.childByAutoId().setValue(roomNameDictionary)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(addChatRoom)
+        present(alert, animated: true, completion: nil)
+    }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
