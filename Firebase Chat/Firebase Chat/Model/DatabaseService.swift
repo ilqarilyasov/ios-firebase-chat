@@ -15,7 +15,7 @@ class DatabaseService {
     private init() {}
     
     // Create a database reference
-    let chatRoomReference = Database.database().reference().child("roomName")
+    let chatRoomReference = Database.database().reference().child("chatRooms")
     let messagesReference = Database.database().reference().child("messages")
     
     

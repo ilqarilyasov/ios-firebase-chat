@@ -9,9 +9,19 @@
 import UIKit
 
 class ChatRoomsTableViewController: UITableViewController {
+    
+    var chatRooms = [ChatRoom]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        observe()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Actions
@@ -43,6 +53,15 @@ class ChatRoomsTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func observe() {
+        DatabaseService.shared.chatRoomReference.observe(.value) { (snapshot) in
+            print(snapshot)
+            guard let chatRoomSnapshot = ChatRoomSnapshot(with: snapshot) else { return }
+            self.chatRooms = chatRoomSnapshot.chatRooms
+            self.tableView.reloadData()
+        }
+    }
+    
 
     // MARK: - Table view data source
 
@@ -51,19 +70,15 @@ class ChatRoomsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return chatRooms.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomCell", for: indexPath)
+        cell.textLabel?.text = chatRooms[indexPath.row].roomName
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -8,41 +8,26 @@
 
 import Foundation
 
-class ChatRoom: Codable, Equatable {
+struct ChatRoom {
     
     // MARK: - Properties
     
     let roomID: String
     let roomName: String
-    let messages: [Message]
+    let messages: [String]
+//    let messageID: String
+//    let messageSender: String
+//    let message: String
     
     
     // MARK: - Initializer
     
-    init(roomID: String = UUID().uuidString, roomName: String, messages: [Message] = []) {
+    init?(roomID: String , chatRoomDict: [String: Any] ) {
         self.roomID = roomID
+        guard let roomName = chatRoomDict["roomName"] as? String else { return nil}
+        let messages = chatRoomDict["messages"] as? [String] ?? []
+        
         self.roomName = roomName
         self.messages = messages
-    }
-    
-    // MARK: - Decoding
-    
-//    required init(from decoder: Decoder ) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        
-//        let roomID = try container.decode(String.self, forKey: .roomID)
-//        let roomName = try container.decode(String.self, forKey: .roomName)
-//        
-//        let messagesContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .messages)
-//        
-//    }
-    
-    
-    // MARK: - Equatable
-    
-    static func == (lhs: ChatRoom, rhs: ChatRoom) -> Bool {
-        return lhs.roomID == rhs.roomID &&
-            lhs.roomName == rhs.roomName &&
-            lhs.messages == rhs.messages
     }
 }
